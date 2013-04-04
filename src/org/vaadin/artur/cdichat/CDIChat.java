@@ -3,11 +3,10 @@ package org.vaadin.artur.cdichat;
 import java.text.DateFormat;
 import java.util.Date;
 
-import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
-import org.vaadin.artur.cdichat.Messager.IncomingChatEvent;
-import org.vaadin.artur.cdichat.Messager.OutgoingChatEvent;
+import org.vaadin.artur.cdichat.Messager.MessageEvent;
+import org.vaadin.artur.cdichat.Messager.MessageListener;
 import org.vaadin.teemu.clara.Clara;
 import org.vaadin.teemu.clara.binder.annotation.UiField;
 import org.vaadin.teemu.clara.binder.annotation.UiHandler;
@@ -21,7 +20,7 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
 @CDIUI
-public class CDIChat extends UI {
+public class CDIChat extends UI implements MessageListener {
 
     @Inject
     private Messager messager;
@@ -29,36 +28,36 @@ public class CDIChat extends UI {
     @UiField
     private VerticalLayout chatLog;
 
-    @Inject
-    private javax.enterprise.event.Event<OutgoingChatEvent> chatEvent;
-
     @Override
     protected void init(VaadinRequest request) {
         setContent(Clara.create(getClass().getResourceAsStream("CDIChat.xml"),
                 this));
+        messager.addMessageListener(this);
     }
 
     @UiHandler("chatMessage")
     public void onTextInput(Property.ValueChangeEvent event) {
         TextField field = (TextField) event.getProperty();
         if (!"".equals(field.getValue())) {
-            chatEvent.fire(new OutgoingChatEvent(field.getValue()));
+            messager.sendMessage(field.getValue());
             field.setValue("");
         }
     }
 
-    public void onIncomingMessage(@Observes
-    IncomingChatEvent event) {
+    @Override
+    public void messageReceived(MessageEvent event) {
+        System.out.println("incoming message " + event.getMessage() + " for "
+                + getUIId() + "(" + this + ")");
         getSession().lock();
         DateFormat df = DateFormat.getTimeInstance(DateFormat.MEDIUM);
         try {
-            Label l = new Label(df.format(new Date()) + ": " + event.message);
+            Label l = new Label(df.format(new Date()) + ": "
+                    + event.getMessage());
             l.setSizeUndefined();
             chatLog.addComponent(l);
         } finally {
             getSession().unlock();
         }
-
     }
 
 }
