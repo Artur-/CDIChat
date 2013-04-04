@@ -17,7 +17,7 @@
 		<!-- The core server part of Vaadin -->
 
 
-		<dependency org="org.vaadin.addons" name="clara" rev="1.0.0-beta2"
+		<dependency org="org.vaadin.addons" name="clara" rev="1.0.0-beta3"
 			conf="default->default" />
 		<dependency org="com.vaadin" name="vaadin-cdi" rev="1.0-SNAPSHOT"
 			conf="default->default" />
