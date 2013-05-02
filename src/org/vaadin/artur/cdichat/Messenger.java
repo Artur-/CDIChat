@@ -5,7 +5,7 @@ import java.util.EventObject;
 
 import com.vaadin.util.ReflectTools;
 
-public interface Messager {
+public interface Messenger {
 
     public void sendMessage(String message);
 

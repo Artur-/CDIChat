@@ -14,7 +14,7 @@ import javax.jms.Topic;
 
 import com.vaadin.event.EventRouter;
 
-public class JMSMessager implements Messager {
+public class JMSMessenger implements Messenger {
 
     @Resource
     private Topic chatTopic;

@@ -5,8 +5,8 @@ import java.util.Date;
 
 import javax.inject.Inject;
 
-import org.vaadin.artur.cdichat.Messager.MessageEvent;
-import org.vaadin.artur.cdichat.Messager.MessageListener;
+import org.vaadin.artur.cdichat.Messenger.MessageEvent;
+import org.vaadin.artur.cdichat.Messenger.MessageListener;
 import org.vaadin.teemu.clara.Clara;
 import org.vaadin.teemu.clara.binder.annotation.UiField;
 import org.vaadin.teemu.clara.binder.annotation.UiHandler;
@@ -25,7 +25,7 @@ import com.vaadin.ui.VerticalLayout;
 public class CDIChat extends UI implements MessageListener {
 
     @Inject
-    private Messager messager;
+    private Messenger messager;
 
     @UiField
     private VerticalLayout chatLog;
