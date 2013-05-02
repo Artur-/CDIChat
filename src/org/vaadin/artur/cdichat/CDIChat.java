@@ -11,6 +11,7 @@ import org.vaadin.teemu.clara.Clara;
 import org.vaadin.teemu.clara.binder.annotation.UiField;
 import org.vaadin.teemu.clara.binder.annotation.UiHandler;
 
+import com.vaadin.annotations.Push;
 import com.vaadin.cdi.CDIUI;
 import com.vaadin.data.Property;
 import com.vaadin.server.VaadinRequest;
@@ -20,6 +21,7 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
 @CDIUI
+@Push
 public class CDIChat extends UI implements MessageListener {
 
     @Inject
