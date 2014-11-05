@@ -1,5 +1,6 @@
 package org.vaadin.artur.cdichat;
 
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.logging.Level;
@@ -54,8 +55,8 @@ public class CDIChat extends UI implements MessageListener {
 
     @Override
     protected void init(VaadinRequest request) {
-        Component content = (Clara.create(
-                getClass().getResourceAsStream("CDIChat.xml"), this));
+        InputStream res = getClass().getResourceAsStream("CDIChat.xml");
+        Component content = (Clara.create(res, this));
         setContent(content);
     }
 
