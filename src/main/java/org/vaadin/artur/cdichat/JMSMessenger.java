@@ -1,5 +1,4 @@
-/**
- * 
+/** * 
  */
 package org.vaadin.artur.cdichat;
 
