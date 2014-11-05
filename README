@@ -1,4 +1,4 @@
 Simple chat application implemented using Vaadin CDI
 
 Run using 
-mvn tomee:run
+mvn package tomee:run

@@ -33,7 +33,7 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.UIDetachedException;
 import com.vaadin.ui.VerticalLayout;
 
-@CDIUI
+@CDIUI("")
 @Push
 public class CDIChat extends UI implements MessageListener {
 
