@@ -10,7 +10,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<vaadin.version>7.3.5</vaadin.version>
+		<vaadin.version>7.4.2</vaadin.version>
 		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 	</properties>
 	<repositories>
@@ -90,11 +90,6 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.vaadin.addons</groupId>
-			<artifactId>clara</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-		<dependency>
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-cdi</artifactId>
 			<version>1.0.0</version>
@@ -165,7 +160,7 @@
 					<draftCompile>false</draftCompile>
 					
 					<style>OBF</style>
-			v		<strict>true</strict>
+					<strict>true</strict>
 					<runTarget>http://localhost:8080/</runTarget>
 				</configuration>
 				<executions>
